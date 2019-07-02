@@ -1,7 +1,10 @@
 {
   "name": "biblia-vest-web-app",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "author": "Junior Erdmann Streichan",
+  "license": "MIT",
+  "description": "A Single Page App for input questions data in the Biblia vest API  ",
   "dependencies": {
     "@types/jest": "24.0.15",
     "@types/node": "12.0.10",
@@ -50,7 +53,7 @@
     "@typescript-eslint/eslint-plugin": "^1.11.0",
     "@typescript-eslint/parser": "^1.11.0",
     "cypress": "^3.3.2",
-    "eslint": "^6.0.1",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-eslint-comments": "^3.1.2",

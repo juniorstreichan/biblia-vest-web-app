@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 const App: React.FC = () => {
-  return <div>BIBLIA VEST</div>;
+  return (
+    <Fragment>
+      <nav>navbar</nav>
+      <main>ROTAS</main>
+      <footer>rodapé</footer>
+    </Fragment>
+  );
 };
 
 export default App;
