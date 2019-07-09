@@ -4,6 +4,7 @@ import Tag from './Tag';
 import InputText from './InputText';
 import TextArea from './TextArea';
 import QuestionAlternativeItem from './QuestionAlternativeItem';
+import ToggleSwitch from './ToggleSwitch';
 
 const ShowCase = () => {
   return (
@@ -29,8 +30,13 @@ const ShowCase = () => {
       <TextArea placeholder="Digite a pergunta aqui" />
       <hr />
       <h3>QUESTION ITEM</h3>
+      <br />
+      <ToggleSwitch />
+      <hr />
+      <h3>QUESTION ITEM</h3>
+      <br />
       <QuestionAlternativeItem />
-      <QuestionAlternativeItem status="primary" />
+      <QuestionAlternativeItem correct />
       <br />
       <hr />
       <h3>INPUT</h3>
