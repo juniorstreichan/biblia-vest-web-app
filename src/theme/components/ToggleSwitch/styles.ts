@@ -1,10 +1,9 @@
-import React, { InputHTMLAttributes } from 'react';
-
+/* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 
-import Colors from '../Colors';
+import Colors from '../../Colors';
 
-const Switch = styled.label`
+export const Switch = styled.label`
   position: relative;
   display: inline-block;
   width: 54px;
@@ -58,21 +57,3 @@ const Switch = styled.label`
     border-radius: 50%;
   }
 `;
-
-// interface ToggleSwitchProps {}
-
-const ToggleSwitch: React.FC<InputHTMLAttributes<any>> = ({ onChange, checked }) => {
-  return (
-    <Switch>
-      <input
-        onChange={onChange || (() => console.log('check'))}
-        type="checkbox"
-        checked={checked}
-      />
-
-      <span className="slider round" />
-    </Switch>
-  );
-};
-
-export default ToggleSwitch;

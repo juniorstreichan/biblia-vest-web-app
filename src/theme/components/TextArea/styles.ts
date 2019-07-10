@@ -1,9 +1,9 @@
-import React, { InputHTMLAttributes } from 'react';
-
+/* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
-import Colors from '../Colors';
 
-const InputBase = styled.input`
+import Colors from '../../Colors';
+
+export const BaseTextArea = styled.textarea`
   font-family: sans-serif;
   font-weight: 600;
   font-size: 14px;
@@ -13,21 +13,15 @@ const InputBase = styled.input`
   outline: none;
   border: none;
   border-bottom: 3px solid ${Colors.gray};
-  background-color: ${Colors.lightGray};
+  background-color: ${Colors.gray};
 
   color: ${Colors.dark};
 
   :focus {
-    background-color: ${Colors.light};
+    background-color: ${Colors.lightGray};
   }
 
   :invalid {
     border-bottom-color: ${Colors.status.warning};
   }
 `;
-
-const InputText: React.FC<InputHTMLAttributes<any>> = props => {
-  return <InputBase {...props} />;
-};
-
-export default InputText;

@@ -1,11 +1,8 @@
-import React from 'react';
+/* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
-import { Icon } from 'react-icons-kit';
-import { cross } from 'react-icons-kit/icomoon/cross';
+import Colors from '../../Colors';
 
-import Colors from '../Colors';
-
-const BaseTag = styled.span`
+export const BaseTag = styled.span`
   margin: 1px 3px;
   padding: 2px 8px;
 
@@ -33,18 +30,3 @@ const BaseTag = styled.span`
     cursor: pointer;
   }
 `;
-
-const Tag: React.FC<{ action?: Function }> = ({ children, action }) => {
-  return (
-    <BaseTag>
-      {children}
-      {action && (
-        <span onClick={() => action()}>
-          <Icon icon={cross} size={10} />
-        </span>
-      )}
-    </BaseTag>
-  );
-};
-
-export default Tag;

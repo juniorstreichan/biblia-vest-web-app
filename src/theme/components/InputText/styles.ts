@@ -1,9 +1,8 @@
-import React, { TextareaHTMLAttributes } from 'react';
-
+/* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
-import Colors from '../Colors';
+import Colors from '../../Colors';
 
-const BaseTextArea = styled.textarea`
+export const InputBase = styled.input`
   font-family: sans-serif;
   font-weight: 600;
   font-size: 14px;
@@ -13,21 +12,15 @@ const BaseTextArea = styled.textarea`
   outline: none;
   border: none;
   border-bottom: 3px solid ${Colors.gray};
-  background-color: ${Colors.gray};
+  background-color: ${Colors.lightGray};
 
   color: ${Colors.dark};
 
   :focus {
-    background-color: ${Colors.lightGray};
+    background-color: ${Colors.light};
   }
 
   :invalid {
     border-bottom-color: ${Colors.status.warning};
   }
 `;
-
-const TextArea: React.FC<TextareaHTMLAttributes<any>> = props => {
-  return <BaseTextArea {...props} />;
-};
-
-export default TextArea;

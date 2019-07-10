@@ -1,12 +1,13 @@
-import React from 'react';
 import styled from 'styled-components';
-import Colors from '../Colors';
+import Colors from '../../Colors';
 
 type BtnStatus = 'default' | 'warning' | 'primary' | 'success' | 'danger';
-interface ButtonProps {
+
+export interface ButtonProps {
   status?: BtnStatus;
 }
-const BaseButton = styled.button.attrs((props: ButtonProps | any) => {
+
+export const BaseButton = styled.button.attrs((props: ButtonProps | any) => {
   const { status } = props;
 
   let borderColor;
@@ -54,12 +55,12 @@ const BaseButton = styled.button.attrs((props: ButtonProps | any) => {
   color: ${({ color }) => color};
 
   opacity: 0.9;
-  border-width: 3px;
+  border-width: 2px;
   font-family: sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   border-radius: 50px;
   border-style: solid;
-  padding: 5px 10px;
+  padding: 5px 7px;
   margin: 4px 3px;
   font-weight: 700;
   box-shadow: 0 4px ${Colors.shadow};
@@ -76,10 +77,9 @@ const BaseButton = styled.button.attrs((props: ButtonProps | any) => {
     top: 3px;
     box-shadow: 0 1px ${Colors.shadow};
   }
+  :disabled {
+    opacity: 0.7;
+    box-shadow: 0 1px ${Colors.shadow};
+    cursor: not-allowed;
+  }
 `;
-
-const Button: React.FC<ButtonProps> = ({ children, ...props }) => (
-  <BaseButton {...props}>{children}</BaseButton>
-);
-
-export default Button;
