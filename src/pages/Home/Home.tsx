@@ -3,7 +3,7 @@ import ShowCase from '../../theme/components/ShowCase';
 
 const Home = () => {
   return (
-    <div style={{ padding: '100px' }}>
+    <div>
       <ShowCase />
     </div>
   );
