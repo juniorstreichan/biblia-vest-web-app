@@ -2,14 +2,15 @@ import React from 'react';
 import Icon from 'react-icons-kit';
 import { ic_help, ic_home, ic_search, ic_settings_power } from 'react-icons-kit/md';
 import { RouteComponentProps } from 'react-router-dom';
-import { Wrapper, Nav, Title, NavGroup, NavItem } from './styles';
+import logo from '../../../assets/img/logo.svg';
 import Button from '../../components/Button/index';
+import { Nav, NavGroup, NavItem, Wrapper } from './styles';
 
 const Navbar: React.FC<RouteComponentProps | any> = ({ history }) => {
   return (
     <Wrapper>
       <Nav>
-        <Title>Biblia Vest</Title>
+        <img width="80px" src={logo} alt="Biblia Vest" />
 
         <NavGroup>
           <NavItem to="/" exact activeClassName="active">

@@ -18,6 +18,20 @@ const ShowCase = () => {
       <Button status="primary">primary</Button>
       <Button status="danger">danger</Button>
       <Button status="success">success</Button>
+      <hr />
+      <Button outline>default</Button>
+      <Button outline status="warning">
+        warning
+      </Button>
+      <Button outline status="primary">
+        primary
+      </Button>
+      <Button outline status="danger">
+        danger
+      </Button>
+      <Button outline status="success">
+        success
+      </Button>
 
       <hr />
       <h3>TAG</h3>

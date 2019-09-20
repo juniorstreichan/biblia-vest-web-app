@@ -2,8 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 import Colors from './Colors';
 
 const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 /* RESET CSS */
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -55,12 +55,12 @@ table {
 }
 
 /* END RESET CSS */
-
+*{
+	font-family:'Lato' ,sans-serif;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family:'Lato' ,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

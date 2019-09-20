@@ -5,6 +5,7 @@ type BtnStatus = 'default' | 'warning' | 'primary' | 'success' | 'danger';
 
 export interface ButtonProps {
   status?: BtnStatus;
+  outline: boolean;
 }
 
 export const BaseButton = styled.button.attrs((props: ButtonProps | any) => {
@@ -15,10 +16,10 @@ export const BaseButton = styled.button.attrs((props: ButtonProps | any) => {
   let color;
 
   switch (status) {
-    case 'warning':
-      borderColor = Colors.gray;
+    case 'warning' || 'orange':
+      borderColor = Colors.status.primary;
       bgColor = Colors.status.warning;
-      color = Colors.dark;
+      color = Colors.light;
       break;
     case 'primary':
       borderColor = Colors.orange;
@@ -37,9 +38,9 @@ export const BaseButton = styled.button.attrs((props: ButtonProps | any) => {
       break;
 
     default:
-      borderColor = Colors.orange;
+      borderColor = Colors.status.primary;
       bgColor = Colors.light;
-      color = Colors.dark;
+      color = Colors.status.primary;
       break;
   }
 
@@ -54,7 +55,9 @@ export const BaseButton = styled.button.attrs((props: ButtonProps | any) => {
   background-color: ${({ bgColor }) => bgColor};
   color: ${({ color }) => color};
 
-  opacity: 0.9;
+  min-width: 100px;
+  min-height: 40px;
+
   border-width: 2px;
   font-family: sans-serif;
   font-size: 12px;
@@ -62,20 +65,86 @@ export const BaseButton = styled.button.attrs((props: ButtonProps | any) => {
   border-style: solid;
   padding: 5px 7px;
   margin: 4px 3px;
-  font-weight: 700;
-  box-shadow: 0 4px ${Colors.shadow};
+  font-weight: bold;
   outline: none;
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
   :hover {
-    opacity: 1;
+    opacity: 0.8;
   }
   :active {
-    transform: translateY(1px) !important;
-    position: relative;
-    top: 3px;
+    transform: scale(0.97) !important;
+  }
+  :disabled {
+    opacity: 0.7;
     box-shadow: 0 1px ${Colors.shadow};
+    cursor: not-allowed;
+  }
+`;
+
+export const BaseButtonOutline = styled.button.attrs((props: ButtonProps | any) => {
+  const { status } = props;
+
+  let borderColor;
+  const bgColor = Colors.light;
+  let color;
+
+  switch (status) {
+    case 'warning' || 'orange':
+      borderColor = Colors.orange;
+      color = Colors.orange;
+      break;
+    case 'primary':
+      borderColor = Colors.status.primary;
+      color = Colors.status.primary;
+      break;
+    case 'danger':
+      borderColor = Colors.status.danger;
+      color = Colors.status.danger;
+      break;
+    case 'success':
+      borderColor = Colors.status.success;
+      color = Colors.status.success;
+      break;
+
+    default:
+      borderColor = Colors.status.primary;
+      color = Colors.status.primary;
+      break;
+  }
+
+  return {
+    ...props,
+    borderColor,
+    bgColor,
+    color,
+  };
+})`
+  border-color: ${({ borderColor }) => borderColor};
+  background-color: ${({ bgColor }) => bgColor};
+  color: ${({ color }) => color};
+
+  min-width: 100px;
+  min-height: 40px;
+
+  border-width: 2px;
+  font-family: sans-serif;
+  font-size: 12px;
+  border-radius: 50px;
+  border-style: solid;
+  padding: 5px 7px;
+  margin: 4px 3px;
+  font-weight: bold;
+  outline: none;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  :hover {
+    opacity: 0.8;
+  }
+  :active {
+    transform: scale(0.97) !important;
   }
   :disabled {
     opacity: 0.7;
