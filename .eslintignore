@@ -3,4 +3,3 @@ build
 coverage
 react-app-env.d.ts
 cypress
-src/__tests__
