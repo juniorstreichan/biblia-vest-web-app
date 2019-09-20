@@ -20,6 +20,6 @@ export const InputBase = styled.input`
   }
 
   :invalid {
-    border-bottom-color: ${Colors.status.warning};
+    border-bottom-color: ${Colors.status.danger};
   }
 `;

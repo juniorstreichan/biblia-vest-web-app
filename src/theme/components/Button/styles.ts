@@ -3,7 +3,7 @@ import Colors from '../../Colors';
 
 type BtnStatus = 'default' | 'warning' | 'primary' | 'success' | 'danger';
 
-export interface ButtonProps {
+export interface ButtonProps extends HTMLButtonElement {
   status?: BtnStatus;
   outline: boolean;
 }
