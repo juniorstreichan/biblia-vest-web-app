@@ -7,7 +7,7 @@ import Colors from '../../Colors';
 export const Wrapper = styled.div`
   width: 50%;
   text-align: center;
-  padding-top: 10px;
+  /* padding-top: 10px; */
   position: fixed;
   z-index: 10;
   @media screen and (max-width: ${BreakPoints.mobile.max}px) {
@@ -18,8 +18,9 @@ export const Wrapper = styled.div`
 export const Nav = styled.nav`
   flex: 1;
   background: ${Colors.light};
-  border-radius: 26px;
+  border-radius: 0 0 25px 25px;
   min-height: 50px;
+  height: 120px;
   padding: 10px;
   box-shadow: 0px 0px 10px ${Colors.shadow};
 `;
@@ -28,6 +29,7 @@ export const NavGroup = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin-top: 10px;
   align-items: center;
   .active {
     text-decoration: underline;

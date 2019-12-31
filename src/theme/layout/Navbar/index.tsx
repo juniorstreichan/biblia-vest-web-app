@@ -1,12 +1,11 @@
 import React from 'react';
 import Icon from 'react-icons-kit';
 import { ic_help, ic_home, ic_search, ic_settings_power } from 'react-icons-kit/md';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import logo from '../../../assets/img/logo.svg';
-import Button from '../../components/Button/index';
 import { Nav, NavGroup, NavItem, Wrapper } from './styles';
 
-const Navbar: React.FC<RouteComponentProps | any> = ({ history }) => {
+const Navbar: React.FC<RouteComponentProps> = ({ history }) => {
   return (
     <Wrapper>
       <Nav>
@@ -25,13 +24,15 @@ const Navbar: React.FC<RouteComponentProps | any> = ({ history }) => {
             <Icon icon={ic_search} size={20} />
             Buscar
           </NavItem>
-          <Button status="danger" onClick={() => history.push('/login')}>
+
+          <NavItem to="/login" exact activeClassName="active">
             <Icon icon={ic_settings_power} size={20} />
-          </Button>
+            Sair
+          </NavItem>
         </NavGroup>
       </Nav>
     </Wrapper>
   );
 };
 
-export default Navbar;
+export default withRouter(Navbar);
