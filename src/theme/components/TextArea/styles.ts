@@ -1,10 +1,8 @@
-/* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 
 import Colors from '../../Colors';
 
 export const BaseTextArea = styled.textarea`
-  font-weight: 600;
   font-size: 14px;
   padding: 5px 10px;
   padding-top: 10px;
@@ -13,6 +11,9 @@ export const BaseTextArea = styled.textarea`
   border: none;
   border-bottom: 3px solid ${Colors.status.primary};
   background-color: ${Colors.gray};
+
+  min-width: 320px;
+  min-height: 100px;
 
   color: ${Colors.dark};
 

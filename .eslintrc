@@ -28,9 +28,13 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/camelcase": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "react/jsx-filename-extension": [1, {
+      "extensions": [".js", ".jsx", ".ts", ".tsx"]
+    }],
     "react/prop-types": "off",
     "react/button-has-type": "off",
+    "import/extensions": "off",
+    "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {
