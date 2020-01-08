@@ -20,7 +20,7 @@ const AppRoutes: React.FC<{ path: string }> = ({ path }) => {
   );
 };
 
-const App: React.FC<RouteComponentProps> = ({ match, history }) => {
+const App: React.FC<RouteComponentProps> = ({ match }) => {
   return (
     <Container>
       <Navbar />

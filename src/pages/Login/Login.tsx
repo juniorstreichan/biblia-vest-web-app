@@ -10,11 +10,14 @@ import { LoginContainer, LoginForm, LoginPanel } from './styles';
 const fieldWidth = '300px';
 
 const Login: React.FC<RouteComponentProps> = ({ history }) => {
-  const handleSubmit = useCallback((evt: React.FormEvent<HTMLFormElement>) => {
-    evt.preventDefault();
-    console.log('LOGIN', evt.target);
-    history.push('/');
-  }, []);
+  const handleSubmit = useCallback(
+    (evt: React.FormEvent<HTMLFormElement>) => {
+      evt.preventDefault();
+      console.log('LOGIN', evt.target);
+      history.push('/');
+    },
+    [history],
+  );
 
   return (
     <LoginContainer>
@@ -30,7 +33,7 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
           />
           <InputText placeholder="Senha" required style={{ width: fieldWidth }} type="password" />
           <Button type="submit" status="warning" style={{ width: fieldWidth }}>
-            {`ENTRAR   `}
+            ENTRAR
             <Icon size={20} icon={ic_send} />
           </Button>
         </LoginForm>
