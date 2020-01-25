@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 import Colors from '../../Colors';
 
@@ -15,11 +14,16 @@ export const InputBase = styled.input`
 
   color: ${Colors.dark};
 
+  :disabled {
+    background-color: ${Colors.lightGray};
+    color: ${Colors.gray};
+    border-bottom-color: ${Colors.gray};
+    cursor: not-allowed;
+  }
   :focus {
     background-color: ${Colors.lightGray};
   }
-
-  :invalid {
+  :focus:invalid {
     border-bottom-color: ${Colors.status.danger};
   }
 `;
