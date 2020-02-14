@@ -14,8 +14,6 @@ class AuthStorage {
 
       return null;
     } catch (err) {
-      this.clear();
-      // window.location.reload();
       return null;
     }
   }
@@ -28,20 +26,13 @@ class AuthStorage {
     }
   }
 
-  public getToken(): string {
+  public getToken(): string | null {
     try {
       const bToken = localStorage.getItem(tokenKey) || '';
 
-      if (bToken === '') {
-        this.clear();
-        return '';
-      }
-
       return atob(bToken);
     } catch (error) {
-      this.clear();
-      // window.location.reload();
-      return '';
+      return null;
     }
   }
 

@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Route, RouteComponentProps, Switch } from 'react-router-dom';
-
+import { AuthContext } from '../context/AuthProvider';
 import Home from '../pages/Home';
 import Container from '../theme/layout/Container';
 import Content from '../theme/layout/Content';
@@ -21,9 +21,10 @@ const AppRoutes: React.FC<{ path: string }> = ({ path }) => {
 };
 
 const App: React.FC<RouteComponentProps> = ({ match }) => {
+  const { clear } = useContext(AuthContext);
   return (
     <Container>
-      <Navbar />
+      <Navbar onLogout={clear} />
       <Content>
         <AppRoutes path={match.path} />
       </Content>

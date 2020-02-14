@@ -1,17 +1,31 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect, Route, RouteProps } from 'react-router-dom';
 
-const PrivateRoute: React.FC<any> = ({ component: Component, ...rest }) => {
-  const isAuth = true;
+interface PrivateRouteProps extends RouteProps {
+  redirectPath: string;
+  condition: boolean;
+  onRedirect: Function;
+}
+
+const PrivateRoute: React.FC<PrivateRouteProps | any> = ({
+  component: Component,
+  redirectPath = '/',
+  condition = true,
+  onRedirect = () => console.log('Redirect...'),
+  ...rest
+}) => {
   return (
     <Route
       {...rest}
       render={props => {
-        if (isAuth) {
+        if (condition) {
           return <Component {...props} />;
         }
-        // AuthStorage.clear();
-        return <Redirect to={{ pathname: '/login' }} />;
+        console.log('condition is ', condition);
+
+        console.log(`Redirect to ${redirectPath}`);
+        onRedirect();
+        return <Redirect to={{ pathname: redirectPath }} />;
       }}
     />
   );
