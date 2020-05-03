@@ -1,15 +1,19 @@
 import React from 'react';
 import Icon from 'react-icons-kit';
 import { ic_help, ic_home, ic_search, ic_settings_power } from 'react-icons-kit/md';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
 import logo from '../../../assets/img/logo.svg';
-import { Nav, NavGroup, NavItem, Wrapper } from './styles';
+import { Nav, NavGroup, NavItem, Wrapper, Img } from './styles';
+import Button from '../../components/Button';
 
-const Navbar: React.FC<RouteComponentProps> = ({ history }) => {
+interface NavProps {
+  onLogout: Function;
+}
+
+const Navbar: React.FC<NavProps> = ({ onLogout }) => {
   return (
     <Wrapper>
       <Nav>
-        <img width="80px" src={logo} alt="Biblia Vest" />
+        <Img src={logo} alt="Biblia Vest" />
 
         <NavGroup>
           <NavItem to="/" exact activeClassName="active">
@@ -25,14 +29,13 @@ const Navbar: React.FC<RouteComponentProps> = ({ history }) => {
             Buscar
           </NavItem>
 
-          <NavItem to="/login" exact activeClassName="active">
+          <Button compact outline status="danger" onClick={onLogout}>
             <Icon icon={ic_settings_power} size={20} />
-            Sair
-          </NavItem>
+          </Button>
         </NavGroup>
       </Nav>
     </Wrapper>
   );
 };
 
-export default withRouter(Navbar);
+export default Navbar;
