@@ -1,7 +1,7 @@
 {
   "name": "biblia-vest-web-app",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "author": "Junior Erdmann Streichan",
   "license": "MIT",
   "description": "A Single Page App for input questions data in the Biblia vest API  ",
@@ -11,12 +11,12 @@
     "@types/react": "16.9.17",
     "@types/react-dom": "16.9.4",
     "axios": "^0.19.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-icons-kit": "^1.3.1",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.3.0",
-    "styled-components": "^4.3.2",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.1",
+    "styled-components": "^5.1.0",
     "typescript": "3.7.4"
   },
   "scripts": {
