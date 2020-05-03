@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   /* padding-top: 10px; */
   position: fixed;
   z-index: 10;
-  @media screen and (max-width: ${BreakPoints.mobile.max}px) {
+  @media (max-width: ${BreakPoints.mobile.max}px) {
     width: 95%;
   }
 `;
@@ -22,7 +22,19 @@ export const Nav = styled.nav`
   min-height: 50px;
   height: 120px;
   padding: 10px;
+  padding-bottom: 20px;
   box-shadow: 0px 0px 10px ${Colors.shadow};
+  @media (max-width: ${BreakPoints.mobile.max}px) {
+    padding-bottom: 0px;
+    height: 100px;
+  }
+`;
+
+export const Img = styled.img`
+  width: 80px;
+  @media (max-width: ${BreakPoints.mobile.max}px) {
+    width: 40px;
+  }
 `;
 
 export const NavGroup = styled.div`

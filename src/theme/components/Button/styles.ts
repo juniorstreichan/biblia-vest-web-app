@@ -55,8 +55,8 @@ export const BaseButton = styled.button.attrs((props: ButtonProps | any) => {
   background-color: ${({ bgColor }) => bgColor};
   color: ${({ color }) => color};
 
-  min-width: 100px;
-  min-height: 40px;
+  min-width: ${({ compact }) => (compact ? 'auto' : '100px')};
+  min-height: ${({ compact }) => (compact ? 'auto' : '40px')};
 
   border-width: 2px;
   font-family: sans-serif;
@@ -125,8 +125,8 @@ export const BaseButtonOutline = styled.button.attrs((props: ButtonProps | any) 
   background-color: ${({ bgColor }) => bgColor};
   color: ${({ color }) => color};
 
-  min-width: 100px;
-  min-height: 40px;
+  min-width: ${({ compact }) => (compact ? 'auto' : '100px')};
+  min-height: ${({ compact }) => (compact ? 'auto' : '40px')};
 
   border-width: 2px;
   font-family: sans-serif;
