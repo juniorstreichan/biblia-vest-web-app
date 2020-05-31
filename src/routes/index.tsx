@@ -8,12 +8,12 @@ const Login = lazy(() => import('../pages/Login'));
 const App = lazy(() => import('./App'));
 
 const Routes: React.FC = () => {
-  const { isAuth } = useContext(AuthContext);
+  const { authenticated } = useContext(AuthContext);
   return (
     <Suspense fallback={<div>CARREGANDO...</div>}>
       <Switch>
         <Route path="/login" exact component={Login} />
-        <PrivateRoute condition={isAuth} redirectPath="/login" path="/" component={App} />
+        <PrivateRoute condition={authenticated} redirectPath="/login" path="/" component={App} />
       </Switch>
     </Suspense>
   );

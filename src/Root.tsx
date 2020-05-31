@@ -1,18 +1,19 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 
 import Routes from './routes';
+import history from './routes/history';
 import GlobalStyles from './theme/GlobalStyles';
 import AuthProvider from './context/AuthProvider';
 
 const Root: React.FC = () => {
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <AuthProvider>
         <GlobalStyles />
         <Routes />
       </AuthProvider>
-    </BrowserRouter>
+    </Router>
   );
 };
 

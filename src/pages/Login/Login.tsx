@@ -5,7 +5,6 @@ import { RouteComponentProps } from 'react-router-dom';
 import logo from '../../assets/img/logo.svg';
 import { AuthContext } from '../../context/AuthProvider';
 import UserLogin from '../../models/UserLogin';
-import AuthService from '../../services/http/AuthService';
 import Colors from '../../theme/Colors';
 import Button from '../../theme/components/Button';
 import InputText from '../../theme/components/InputText';
@@ -15,33 +14,23 @@ const fieldWidth = '300px';
 
 const Login: React.FC<RouteComponentProps> = ({ history }) => {
   const [error, setError] = useState<null | Error>();
-  const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState<UserLogin>({ email: '', password: '' });
 
-  const authContext = useContext(AuthContext);
-
-  const handleRedirect = useCallback(() => {
-    if (authContext.isAuth) {
-      history.push('/');
-    }
-  }, [authContext.isAuth, history]);
+  const { authenticated, loading, handleLogin } = useContext(AuthContext);
 
   const handleSubmit = useCallback(
     async (evt: React.FormEvent<HTMLFormElement>) => {
       evt.preventDefault();
       setError(null);
-      setIsLoading(true);
       try {
-        const { data } = await AuthService.doLogin(user);
-        authContext.setAuth(data);
-        handleRedirect();
+        await handleLogin(user);
       } catch (ex) {
+        console.log('DEU ERRO', ex);
+
         setError(ex.response.data);
-      } finally {
-        setIsLoading(false);
       }
     },
-    [handleRedirect, setError, setIsLoading, user, authContext],
+    [setError, user],
   );
 
   const handleChangeField = useCallback(
@@ -53,8 +42,10 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
   );
 
   useEffect(() => {
-    handleRedirect();
-  }, [handleRedirect]);
+    if (authenticated) {
+      history.push('/');
+    }
+  }, [authenticated]);
 
   return (
     <LoginContainer>
@@ -69,7 +60,7 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
             name="email"
             value={user.email}
             onChange={handleChangeField}
-            disabled={isLoading}
+            disabled={loading}
           />
           <InputText
             placeholder="Senha"
@@ -79,10 +70,10 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
             name="password"
             value={user.password}
             onChange={handleChangeField}
-            disabled={isLoading}
+            disabled={loading}
           />
           {error && <span style={{ color: Colors.status.danger }}>{error.message}</span>}
-          <Button type="submit" disabled={isLoading} status="warning" style={{ width: fieldWidth }}>
+          <Button type="submit" disabled={loading} status="warning" style={{ width: fieldWidth }}>
             ENTRAR
             <Icon size={20} icon={ic_send} />
           </Button>

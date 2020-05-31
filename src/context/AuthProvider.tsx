@@ -1,46 +1,26 @@
-import React, { useState, useCallback } from 'react';
-import User from '../models/User';
-import AuthStorage from '../services/storage/AuthStorage';
+import React from 'react';
+import useAuth, { AuthState } from './hooks/useAuth';
 
-type AuthContextProps = {
-  isAuth: boolean;
-  user: User | null;
-  setAuth: (auth: { user: User; token: string }) => void;
-  clear: Function;
-};
-
-const initialContext: AuthContextProps = {
-  isAuth: false,
+const INITIAL_CONTEXT: AuthState = {
+  authenticated: false,
+  handleLogin(user) {
+    console.log(user);
+  },
+  handleLogout() {
+    console.log('logout');
+  },
+  loading: false,
   user: null,
-  setAuth(a) {
-    console.log('setAuth(a)');
-  },
-  clear() {
-    console.log('clear()');
-  },
 };
 
-export const AuthContext = React.createContext<AuthContextProps>(initialContext);
+export const AuthContext = React.createContext<AuthState>(INITIAL_CONTEXT);
 
 const AuthProvider: React.FC = ({ children }) => {
-  const [isAuth, setIsAuth] = useState(AuthStorage.isAuth());
-  const [user, setUser] = useState<User | null>(null);
-
-  const setAuth = useCallback((auth: { user: User; token: string }) => {
-    AuthStorage.setToken(auth.token);
-    AuthStorage.setUser(auth.user);
-    setIsAuth(AuthStorage.isAuth());
-    setUser(auth.user);
-  }, []);
-
-  const clear = useCallback(() => {
-    AuthStorage.clear();
-    setIsAuth(AuthStorage.isAuth());
-    setUser(null);
-  }, []);
-
+  const { authenticated, handleLogin, handleLogout, loading, user } = useAuth();
   return (
-    <AuthContext.Provider value={{ user, setAuth, clear, isAuth }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user, authenticated, handleLogin, handleLogout, loading }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

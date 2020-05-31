@@ -21,10 +21,10 @@ const AppRoutes: React.FC<{ path: string }> = ({ path }) => {
 };
 
 const App: React.FC<RouteComponentProps> = ({ match }) => {
-  const { clear } = useContext(AuthContext);
+  const { handleLogout } = useContext(AuthContext);
   return (
     <Container>
-      <Navbar onLogout={clear} />
+      <Navbar onLogout={handleLogout} />
       <Content>
         <AppRoutes path={match.path} />
       </Content>
