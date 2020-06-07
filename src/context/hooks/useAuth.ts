@@ -31,6 +31,7 @@ export default function useAuth(): AuthState {
     const { data } = await apiAxios.post('/auth', userLogin);
     AuthStorage.setToken(data.token);
     AuthStorage.setUser(data.user);
+    apiAxios.defaults.headers.Authorization = `Bearer ${data.token}`;
     setUser(data.user);
     setAuthenticated(true);
     history.push(redirectPath);

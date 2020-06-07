@@ -30,7 +30,8 @@ class AuthStorage {
     try {
       const bToken = localStorage.getItem(tokenKey) || '';
 
-      return atob(bToken);
+      // return atob(bToken);
+      return bToken;
     } catch (error) {
       return null;
     }
@@ -38,7 +39,8 @@ class AuthStorage {
 
   public setToken(token = ''): void {
     try {
-      localStorage.setItem(tokenKey, btoa(token));
+      // localStorage.setItem(tokenKey, btoa(token));
+      localStorage.setItem(tokenKey, token);
     } catch (error) {
       console.error('setToken', error);
     }

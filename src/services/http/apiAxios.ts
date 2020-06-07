@@ -20,8 +20,7 @@ apiAxios.interceptors.request.use(
       const exp = isExpired(payload.exp);
       console.log('isExpired', exp);
       if (exp) {
-        AuthStorage.clear();
-        history.replace('/login');
+        history.push('/login', { clear: true, redirectPath: history.location.pathname });
       }
     }
     return newConfig;

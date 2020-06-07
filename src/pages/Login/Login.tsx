@@ -16,21 +16,21 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
   const [error, setError] = useState<null | Error>();
   const [user, setUser] = useState<UserLogin>({ email: '', password: '' });
 
-  const { authenticated, loading, handleLogin } = useContext(AuthContext);
-
+  const { authenticated, loading, handleLogin, handleLogout } = useContext(AuthContext);
+  const { state } = history.location;
   const handleSubmit = useCallback(
     async (evt: React.FormEvent<HTMLFormElement>) => {
       evt.preventDefault();
       setError(null);
       try {
-        await handleLogin(user);
+        await handleLogin(user, state?.redirectPath);
       } catch (ex) {
         console.log('DEU ERRO', ex);
 
         setError(ex.response.data);
       }
     },
-    [setError, user],
+    [setError, user, state],
   );
 
   const handleChangeField = useCallback(
@@ -42,10 +42,16 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
   );
 
   useEffect(() => {
-    if (authenticated) {
-      history.push('/');
+    console.log(state);
+
+    if (state?.clear) {
+      handleLogout();
     }
-  }, [authenticated]);
+
+    if (authenticated) {
+      history.push(state?.redirectPath || '/');
+    }
+  }, [authenticated, state]);
 
   return (
     <LoginContainer>

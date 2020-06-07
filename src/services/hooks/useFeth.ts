@@ -13,7 +13,7 @@ function useFeth<TBody = any>(endpont: string) {
         const request = await apiAxios.get(endpont);
         setData(request.data as TBody);
       } catch (err) {
-        console.log('error', err.request);
+        console.log('error', err, err.request);
         setError(err);
       } finally {
         setIsLoadding(false);

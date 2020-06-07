@@ -1,19 +1,7 @@
 import React from 'react';
 import useAuth, { AuthState } from './hooks/useAuth';
 
-const INITIAL_CONTEXT: AuthState = {
-  authenticated: false,
-  handleLogin(user) {
-    console.log(user);
-  },
-  handleLogout() {
-    console.log('logout');
-  },
-  loading: false,
-  user: null,
-};
-
-export const AuthContext = React.createContext<AuthState>(INITIAL_CONTEXT);
+export const AuthContext = React.createContext<AuthState>({} as AuthState);
 
 const AuthProvider: React.FC = ({ children }) => {
   const { authenticated, handleLogin, handleLogout, loading, user } = useAuth();
